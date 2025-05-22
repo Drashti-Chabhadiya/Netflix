@@ -1,16 +1,17 @@
-import { Box, Container } from "@mui/material";
-import LandingPage from "./pages/LandingPage";
-import TrendingPage from "./pages/TrendingPage";
-import MoreReasons from "./pages/MoreReasons";
-import FAQPage from "./pages/FAQPage";
+import { Box, Container } from '@mui/material';
+import LandingPage from './pages/LandingPage';
+import TrendingPage from './pages/TrendingPage';
+import MoreReasons from './pages/MoreReasons';
+import FAQPage from './pages/FAQPage';
 
 export default function Home() {
   return (
     <Box>
       <LandingPage />
       <Box
-        sx={{ backgroundColor: "black", paddingTop: "2rem", color: "white" }}>
-        <Container maxWidth={"lg"}>
+        sx={{ backgroundColor: 'black', paddingTop: '2rem', color: 'white' }}
+      >
+        <Container maxWidth={'lg'}>
           <TrendingPage />
           <MoreReasons />
           <FAQPage />

@@ -1,12 +1,12 @@
-import { Container } from "@mui/material";
-import Footer from "./components/common/Footer";
+import { Container } from '@mui/material';
+import Footer from './components/common/Footer';
 
-import "./globals.css";
+import './globals.css';
 // import Header from "./components/common/Header";
 
 export const metadata = {
-  title: "Your App",
-  description: "App description",
+  title: 'Your App',
+  description: 'App description',
 };
 
 export default function RootLayout({ children }) {
@@ -15,13 +15,14 @@ export default function RootLayout({ children }) {
       <body style={{ margin: 0 }}>
         <div
           style={{
-            backgroundColor: "black",
+            backgroundColor: 'black',
             // minHeight: "100vh",
-          }}>
+          }}
+        >
           {/* Optional: Add Header here */}
           {/* <Header /> */}
           <main style={{ flex: 1 }}>{children}</main>
-          <Container maxWidth={"lg"}>
+          <Container maxWidth={'lg'}>
             <Footer />
           </Container>
         </div>

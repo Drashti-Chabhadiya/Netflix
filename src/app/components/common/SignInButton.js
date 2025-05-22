@@ -1,7 +1,7 @@
-"use client";
+'use client';
 import { Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
-import React from 'react'
+import React from 'react';
 
 const SignInButton = () => {
   const router = useRouter();
@@ -9,17 +9,18 @@ const SignInButton = () => {
     <Button
       variant="contained"
       onClick={() => {
-        router.push("/login");
+        router.push('/login');
       }}
       sx={{
-        backgroundColor: "#E50814",
-        textTransform: "capitalize",
-        textAlign: "center",
-        py: "4px",
-      }}>
+        backgroundColor: '#E50814',
+        textTransform: 'capitalize',
+        textAlign: 'center',
+        py: '4px',
+      }}
+    >
       Sign In
     </Button>
   );
-}
+};
 
-export default SignInButton
+export default SignInButton;

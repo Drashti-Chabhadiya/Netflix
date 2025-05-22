@@ -1,37 +1,40 @@
-import React from 'react'
-import { Box } from "@mui/material";
+import React from 'react';
+import { Box } from '@mui/material';
 
-const MainBackground = ({ children, color, bgImage,height,bgImageWidth }) => {
+const MainBackground = ({ children, color, bgImage, height, bgImageWidth }) => {
   return (
     <Box
       sx={{
-        position: "relative",
-      }}>
+        position: 'relative',
+      }}
+    >
       <Box
         sx={{
-          position: "absolute",
+          position: 'absolute',
           height: {
             xs: height,
-            md: "100vh",
+            md: '100vh',
           },
-          width: "100%",
+          width: '100%',
           backgroundColor: color,
-          color: "white",
-        }}>
+          color: 'white',
+        }}
+      >
         {children}
       </Box>
       <Box
         sx={{
           backgroundImage: `url(${bgImage})`,
-          backgroundSize: "cover",
+          backgroundSize: 'cover',
           height: {
             xs: height,
-            md: "100vh",
+            md: '100vh',
           },
-          color: "white",
-        }}></Box>
+          color: 'white',
+        }}
+      ></Box>
     </Box>
   );
 };
 
-export default MainBackground
+export default MainBackground;

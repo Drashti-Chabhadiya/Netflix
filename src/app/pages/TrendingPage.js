@@ -1,10 +1,8 @@
-import React from 'react'
+import React from 'react';
 import TrendingPageContent from '../components/trendingPage/TrendingPageContent';
 
 const TrendingPage = () => {
-  return (
-      <TrendingPageContent />
-  );
-}
+  return <TrendingPageContent />;
+};
 
-export default TrendingPage
+export default TrendingPage;
