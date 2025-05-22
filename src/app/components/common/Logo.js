@@ -7,20 +7,28 @@ import React from 'react';
 const Logo = () => {
   const router = useRouter();
   return (
+    <Box
+    sx={{
+      width: {
+        xs: 100,
+        md: 130,
+      },
+      height: {
+        xs: 30,
+        md: 40,
+      },
+      cursor: 'pointer',
+      position: 'relative',
+    }}
+    onClick={() => router.push('/')}
+  >
     <Image
-      src={'/assets/images/download-netflix.svg'}
+      src="/assets/images/download-netflix.svg"
       alt="logo"
-      height={40}
-      width={130}
-      style={{
-        width: 'auto',
-        height: '40px',
-        cursor: 'pointer',
-        display: 'flex',
-        justifyContent: 'start',
-      }}
-      onClick={() => router.push('/')}
+      fill 
+      style={{ objectFit: 'contain' }}
     />
+  </Box>
   );
 };
 

@@ -3,7 +3,14 @@ import { Box, Container } from '@mui/material';
 
 const Header = ({ children }) => {
   return (
-    <Container maxWidth="lg" sx={{ padding: '0px !important' }}>
+    <Container
+      maxWidth="lg"
+      sx={{
+        padding: {
+          lg: '0px !important',
+        },
+      }}
+    >
       <Box
         sx={{
           display: 'flex',
