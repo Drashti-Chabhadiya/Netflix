@@ -12,7 +12,6 @@ const page = () => {
       color="rgba(0, 0, 0, 0.5)"
       bgImage={'/assets/images/login-help-bg.jpg'}
       height={'100vh'}
-      bgImageWidth={'960px'}
     >
       <Header>
         <Logo />

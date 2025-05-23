@@ -11,6 +11,7 @@ const Login = () => {
       color="rgba(0, 0, 0, 0.5)"
       bgImage={'/assets/images/main-image.jpg'}
       height={'100vh'}
+      mainBgColor={true}
     >
       <Header>
         <Logo />

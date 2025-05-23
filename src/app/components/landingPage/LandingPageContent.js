@@ -52,7 +52,6 @@ const LandingPageContent = () => {
         }}
       >
         <TextField
-          // fullWidth
           sx={{
             '& .MuiOutlinedInput-root': {
               '& fieldset': {

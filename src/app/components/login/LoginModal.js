@@ -8,6 +8,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material';
+import { signIn } from 'next-auth/react';
 import Link from 'next/link';
 import React from 'react';
 
@@ -16,6 +17,9 @@ const LoginModal = () => {
     <Container
       maxWidth="lg"
       sx={{
+        padding: {
+          xs: '0px !important',
+        },
         position: 'absolute',
         top: '50%',
         left: '50%',
@@ -28,7 +32,10 @@ const LoginModal = () => {
     >
       <Box
         sx={{
-          bgcolor: 'rgba(0, 0, 0, 0.7)',
+          bgcolor: {
+            xs: 'black',
+            sm: 'rgba(0, 0, 0, 0.7)',
+          },
           color: 'white',
           border: '2px solid #000',
           p: 7,
@@ -148,8 +155,15 @@ const LoginModal = () => {
                   width: '100%',
                   minHeight: '2.5rem',
                 }}
+                onClick={() =>
+                  // signIn('google')
+                  signIn('google', {
+                    callbackUrl: '/',
+                    prompt: 'select_account',
+                  })
+                }
               >
-                Use a sign-in code
+                Sign in with Google
               </Button>
             </Grid>
             <Grid size={12}>

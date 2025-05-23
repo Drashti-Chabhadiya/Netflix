@@ -26,9 +26,18 @@ const LoginHelpBox = () => {
       maxWidth="lg"
       sx={{
         position: 'absolute',
-        top: '50%',
-        left: '50%',
-        transform: 'translate(-50%, -50%)',
+        top: {
+          xs: 'auto',
+          sm: '50%',
+        },
+        left: {
+          xs: 'auto',
+          sm: '50%',
+        },
+        transform: {
+          xs: 'none',
+          sm: 'translate(-50%, -50%)',
+        },
         width: {
           sm: '100%',
           md: 480,

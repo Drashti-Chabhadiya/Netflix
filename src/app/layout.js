@@ -1,11 +1,9 @@
-import { Container } from '@mui/material';
 import Footer from './components/common/Footer';
-
 import './globals.css';
-// import Header from "./components/common/Header";
+import { Providers } from './providers';
 
 export const metadata = {
-  title: 'Your App',
+  title: 'Netflix India – Watch TV Shows Online, Watch Movies Online',
   description: 'App description',
 };
 
@@ -16,15 +14,22 @@ export default function RootLayout({ children }) {
         <div
           style={{
             backgroundColor: 'black',
+            color: 'white',
+            // height: "100vh",
             // minHeight: "100vh",
           }}
         >
-          {/* Optional: Add Header here */}
-          {/* <Header /> */}
-          <main style={{ flex: 1 }}>{children}</main>
-          <Container maxWidth={'lg'}>
-            <Footer />
-          </Container>
+          <main
+            style={
+              {
+                // flex: 1,
+                // overflow: 'hidden',
+              }
+            }
+          >
+            <Providers>{children}</Providers>
+          </main>
+          <Footer />
         </div>
       </body>
     </html>
