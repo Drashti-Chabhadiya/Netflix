@@ -19,7 +19,7 @@ const SignInButton = () => {
   if (session) {
     return (
       <>
-        <p>Signed in as {session.user.email}</p>
+        {/* <p>Signed in as {session.user.email}</p> */}
         <Button
           variant="contained"
           onClick={handleLogOut}
