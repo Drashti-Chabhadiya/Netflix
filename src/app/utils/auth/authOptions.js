@@ -1,8 +1,7 @@
 import GoogleProvider from 'next-auth/providers/google';
 import CredentialsProvider from 'next-auth/providers/credentials';
-import NextAuth from 'next-auth';
-import { connectToDatabase } from '@/app/lib/mongodb/mongodb';
 import User from '../models/User';
+import { connectToDatabase } from '@/app/lib/mongodb/mongodb';
 
 export const authOptions = {
   providers: [
@@ -81,6 +80,3 @@ export const authOptions = {
     },
   },
 };
-
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
