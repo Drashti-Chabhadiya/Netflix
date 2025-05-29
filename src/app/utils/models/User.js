@@ -1,5 +1,9 @@
 import mongoose from 'mongoose';
-import bcrypt from 'bcrypt';
+
+const UserProvider = {
+  CREDENTIALS: 'credentials',
+  GOOGLE: 'google',
+};
 
 const userSchema = new mongoose.Schema({
   email: {
@@ -11,7 +15,7 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: false, // now optional for OAuth
+    required: false,
   },
   token: {
     type: String,
@@ -21,21 +25,9 @@ const userSchema = new mongoose.Schema({
   image: String,
   provider: {
     type: String,
-    default: 'credentials', // or 'google'
+    enum: Object.values(UserProvider),
+    default: UserProvider.CREDENTIALS,
   },
-});
-
-// Hash the password before saving
-userSchema.pre('save', async function (next) {
-  if (!this.isModified('password')) return next();
-
-  try {
-    const salt = await bcrypt.genSalt(10);
-    this.password = await bcrypt.hash(this.password, salt);
-    next();
-  } catch (err) {
-    next(err);
-  }
 });
 
 export default mongoose.models.User || mongoose.model('User', userSchema);

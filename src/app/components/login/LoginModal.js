@@ -14,6 +14,7 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
+import { toast } from 'react-toastify';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -25,18 +26,23 @@ const LoginModal = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    const res = await signIn('credentials', {
-      redirect: false,
-      email: data.email,
-      password: data.password,
-      callbackUrl: '/',
-    });
-    console.log('res in onSubmit:', res);
-    if (res?.ok) {
-      router.push('/');
+    try {
+      const res = await signIn('credentials', {
+        redirect: false,
+        email: data.email,
+        password: data.password,
+        callbackUrl: '/',
+      });
+      if (res?.ok) {
+        toast.success('Login successful');
+        router.push('/');
+      } else {
+        toast.error(res?.error || 'Invalid credentials');
+      }
+    } catch (err) {
+      toast.error('Something went wrong. Please try again later.');
     }
   };
-
   const handleLoginWithGoogle = async () => {
     try {
       await signIn('google', {

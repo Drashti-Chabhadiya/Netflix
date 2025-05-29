@@ -23,11 +23,10 @@ export const authOptions = {
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify(credentials),
           });
-
           const user = await res.json();
 
           if (!res.ok || !user.token) {
-            return null;
+            throw new Error(user?.error || 'Login failed');
           }
           return {
             id: user.id || user._id,
@@ -36,7 +35,7 @@ export const authOptions = {
           };
         } catch (error) {
           console.error('Error in authorize:', error);
-          return null;
+          throw new Error(error.message || 'Login failed');
         }
       },
     }),
@@ -69,6 +68,9 @@ export const authOptions = {
     async session({ session, token }) {
       await connectToDatabase();
       const dbUser = await User.findOne({ email: session.user.email });
+      if (!dbUser) {
+        throw new Error('User not found');
+      }
       if (dbUser) {
         session.user.id = dbUser._id;
         session.user.token = dbUser.token;

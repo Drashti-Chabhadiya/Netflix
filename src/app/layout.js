@@ -2,6 +2,10 @@ import './globals.css';
 import { Providers } from './providers';
 import LayoutWrapper from './components/common/LayoutWrapper';
 import ReduxProvider from './components/ReduxProvider';
+import 'swiper/css';
+import 'swiper/css/pagination';
+import 'swiper/css/navigation';
+import { ToastContainer } from 'react-toastify';
 
 export const metadata = {
   title: 'Netflix India – Watch TV Shows Online, Watch Movies Online',
@@ -15,6 +19,7 @@ export default function RootLayout({ children }) {
         <ReduxProvider>
           <Providers>
             <LayoutWrapper>{children}</LayoutWrapper>
+            <ToastContainer />
           </Providers>
         </ReduxProvider>
       </body>
