@@ -1,34 +1,101 @@
-import GoogleProvider from 'next-auth/providers/google';
-import NextAuth from 'next-auth';
+import Auth0Provider from "next-auth/providers/auth0";
 
 export const authOptions = {
   providers: [
-    GoogleProvider({
-      clientId: process.env.GOOGLE_CLIENT_ID,
-      clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+    Auth0Provider({
+      clientId: process.env.AUTH0_CLIENT_ID,
+      clientSecret: process.env.AUTH0_CLIENT_SECRET,
+      // issuer: process.env.AUTH0_ISSUER,
     }),
   ],
-  callbacks: {
-    async session({ session, token }) {
-      session.user.id = token.sub;
-      return session;
-    },
-  },
-  session: {
-    strategy: 'jwt', // or 'database' if you're using a DB
-  },
-  cookies: {
-    sessionToken: {
-      name: `__Secure-next-auth.session-token`, // or without __Secure if not using HTTPS
-      options: {
-        httpOnly: true,
-        sameSite: 'lax',
-        path: '/',
-        secure: process.env.NODE_ENV === 'production',
-      },
-    },
-  },
+  secret: process.env.NEXTAUTH_SECRET,
 };
 
-const handler = NextAuth(authOptions);
-export { handler as GET, handler as POST };
+
+
+// import GoogleProvider from 'next-auth/providers/google';
+// import CredentialsProvider from 'next-auth/providers/credentials';
+// import NextAuth from 'next-auth';
+// import { connectToDatabase } from '@/app/lib/mongodb/mongodb';
+// import User from '../models/User';
+
+// export const authOptions = {
+//   providers: [
+//     GoogleProvider({
+//       clientId: process.env.GOOGLE_CLIENT_ID,
+//       clientSecret: process.env.GOOGLE_CLIENT_SECRET,
+//     }),
+//     CredentialsProvider({
+//       name: 'Credentials',
+//       credentials: {
+//         email: { label: 'email', type: 'text' },
+//         password: { label: 'password', type: 'password' },
+//       },
+//       async authorize(credentials) {
+//         console.log('credentials in authorize:', credentials);
+//         try {
+//           const res = await fetch(`${process.env.NEXT_API_BASE_URL}/login`, {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(credentials),
+//           });
+
+//           const user = await res.json();
+
+//           if (!res.ok || !user.token) {
+//             return null;
+//           }
+//           return {
+//             id: user.id || user._id,
+//             email: user.email,
+//             token: user.token,
+//           };
+//         } catch (error) {
+//           console.error('Error in authorize:', error);
+//           return null;
+//         }
+//       },
+//     }),
+//   ],
+//   secret: process.env.NEXTAUTH_SECRET,
+//   callbacks: {
+//     async jwt({ token, account, user }) {
+//       if (account && user && account.provider === 'google') {
+//         token.id_token = account.id_token;
+//         await connectToDatabase();
+
+//         const existingUser = await User.findOne({ email: user.email });
+
+//         if (!existingUser) {
+//           await User.create({
+//             email: user.email,
+//             name: user.name,
+//             image: user.image,
+//             provider: account.provider,
+//             token: account.id_token,
+//           });
+//         } else {
+//           existingUser.token = account.id_token;
+//           await existingUser.save();
+//         }
+//       }
+//       return token;
+//     },
+
+//     async session({ session, token }) {
+//       await connectToDatabase();
+//       const dbUser = await User.findOne({ email: session.user.email });
+//       if (dbUser) {
+//         session.user.id = dbUser._id;
+//         session.user.token = dbUser.token;
+//       }
+
+//       session.id_token = token.id_token;
+
+//       return session;
+//     },
+//   },
+// };
+
+// const handler = NextAuth(authOptions);
+// export { handler as GET, handler as POST };

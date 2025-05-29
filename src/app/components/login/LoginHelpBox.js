@@ -160,7 +160,7 @@ const LoginHelpBox = () => {
         </Box>
         <Box
           sx={{
-            mt: 2,
+            my: 2,
           }}
         >
           <Typography

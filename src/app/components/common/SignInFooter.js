@@ -3,11 +3,12 @@ import { footerData } from '@/app/lib/footer/footerData';
 import { Box, Container, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
+import LanguageBtn from './LanguageBtn';
 
-const Footer = () => {
+const SignInFooter = () => {
   return (
     <Container maxWidth={'lg'}>
-      <Box sx={{ padding: '2rem 0' }}>
+      <Box sx={{ padding: '2rem 0' }} className="sign-footer">
         <Typography
           sx={{
             color: 'rgba(255, 255, 255, 0.7)',
@@ -45,9 +46,13 @@ const Footer = () => {
             );
           })}
         </Grid>
+
+        <Grid container spacing={2} sx={{ mt: 2 }}>
+          <LanguageBtn />
+        </Grid>
       </Box>
     </Container>
   );
 };
 
-export default Footer;
+export default SignInFooter;
