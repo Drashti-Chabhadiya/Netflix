@@ -4,6 +4,7 @@ import { NextResponse } from 'next/server';
 import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 
+
 const JWT_SECRET = process.env.NEXT_JWT_SECRET || 'secret_key_for_dev';
 
 await connectToDatabase();
