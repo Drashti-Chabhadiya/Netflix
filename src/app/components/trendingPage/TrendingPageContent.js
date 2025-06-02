@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import '../../styles/trendingSwiper.css';
 import { Box, Grid } from '@mui/material';
 import TitleUI from '../common/TitleUI';
@@ -8,8 +8,16 @@ import Image from 'next/image';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import { Navigation } from 'swiper/modules';
+import TrendingModal from './TrendingModal';
 
 const TrendingPageContent = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const [selectedTrend, setSelectedTrend] = useState(null);
+  const handleOpen = (trendData) => {
+    setSelectedTrend(trendData);
+    setIsOpen(true);
+  };
+
   return (
     <Box sx={{ padding: '2rem 0' }}>
       <Box
@@ -42,7 +50,7 @@ const TrendingPageContent = () => {
           modules={[Pagination, Navigation]}
           className="mySwiper"
         >
-          {trendingImages.map((image, index) => (
+          {trendingImages.map((trendData, index) => (
             <Grid key={index} size={{ lg: 3, xs: 4, md: 2, sm: 2 }}>
               <SwiperSlide key={index}>
                 <Box
@@ -55,13 +63,14 @@ const TrendingPageContent = () => {
                   }}
                 >
                   <Image
-                    src={image.src}
-                    alt={image.alt}
+                    src={trendData.src}
+                    alt={trendData.alt}
                     width={250}
                     height={250}
                     style={{
                       borderRadius: '8px',
                     }}
+                    onClick={() => handleOpen(trendData)}
                   />
                 </Box>
               </SwiperSlide>
@@ -69,6 +78,11 @@ const TrendingPageContent = () => {
           ))}
         </Swiper>
       </Grid>
+      <TrendingModal
+        isOpen={isOpen}
+        setIsOpen={setIsOpen}
+        selectedTrend={selectedTrend}
+      />
     </Box>
   );
 };
