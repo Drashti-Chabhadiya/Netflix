@@ -12,6 +12,7 @@ const Footer = () => {
           sx={{
             color: 'rgba(255, 255, 255, 0.7)',
             fontSize: '16px',
+            padding: '1rem 0',
           }}
         >
           Questions? Call{' '}
@@ -30,16 +31,18 @@ const Footer = () => {
                     justifyContent: 'space-evenly',
                   }}
                 >
-                  <a
+                  <Link
                     href={item.url}
                     style={{
-                      color: 'white',
-                      textDecoration: 'none',
                       color: 'rgba(255, 255, 255, 0.7)',
+                      textDecoration: 'underline',
+                      fontSize: '14px',
+                      display: 'block',
+                      marginBottom: '0.5rem',
                     }}
                   >
                     {item.name}
-                  </a>
+                  </Link>
                 </Box>
               </Grid>
             );

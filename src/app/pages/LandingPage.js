@@ -17,7 +17,7 @@ const LandingPage = () => {
       <Header>
         <Logo />
         <HeaderButton>
-          <LanguageBtn />
+          <LanguageBtn height={'32px'} />
           <SignInButton />
         </HeaderButton>
       </Header>

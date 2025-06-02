@@ -1,5 +1,6 @@
 export const footerData = [
-  { id: 1, name: 'About Us', url: '/about' },
+  { id: 1, name: 'FAQ', url: '/faq' },
+  // { id: 1, name: 'About Us', url: '/about' },
   { id: 2, name: 'Careers', url: '/careers' },
   { id: 3, name: 'Press', url: '/press' },
   { id: 4, name: 'Contact Us', url: '/contact' },

@@ -2,7 +2,7 @@ import { Box, Container } from '@mui/material';
 import LandingPage from './pages/LandingPage';
 import TrendingPage from './pages/TrendingPage';
 import MoreReasons from './pages/MoreReasons';
-import FAQPage from './pages/FAQPage';
+import FAQAskedQuestions from './pages/FAQAskedQuestions';
 
 export default function Home() {
   return (
@@ -14,7 +14,7 @@ export default function Home() {
         <Container maxWidth={'lg'}>
           <TrendingPage />
           <MoreReasons />
-          <FAQPage />
+          <FAQAskedQuestions />
         </Container>
       </Box>
     </Box>

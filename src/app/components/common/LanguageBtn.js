@@ -3,7 +3,7 @@ import React from 'react';
 import { languageOptions } from '@/app/lib/header/languageOption';
 import { Autocomplete, TextField } from '@mui/material';
 
-const LanguageBtn = () => {
+const LanguageBtn = ({ height }) => {
   return (
     <Autocomplete
       disablePortal
@@ -23,7 +23,7 @@ const LanguageBtn = () => {
           '&.Mui-focused fieldset': {
             border: '2px solid rgba(255, 255, 255, 0.7)',
           },
-          height: '32px',
+          height: height ?? '32px',
         },
         '& .MuiInputBase-input': {
           color: 'white',

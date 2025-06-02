@@ -10,7 +10,7 @@ import TitleUI from '../common/TitleUI';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import { faqData } from '@/app/lib/faq/faqData';
 
-const FAQContent = () => {
+const FaqQuestions = () => {
   return (
     <Box
       sx={{
@@ -82,4 +82,4 @@ const FAQContent = () => {
   );
 };
 
-export default FAQContent;
+export default FaqQuestions;

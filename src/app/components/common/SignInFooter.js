@@ -48,7 +48,7 @@ const SignInFooter = () => {
         </Grid>
 
         <Grid container spacing={2} sx={{ mt: 2 }}>
-          <LanguageBtn />
+          <LanguageBtn height={'32px'} />
         </Grid>
       </Box>
     </Container>
