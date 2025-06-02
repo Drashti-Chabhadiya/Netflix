@@ -3,6 +3,7 @@ import { Box, Button, Chip, Container, Modal, Typography } from '@mui/material';
 import Image from 'next/image';
 import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import CloseIcon from '@mui/icons-material/Close';
 
 const chipSx = {
   backgroundColor: 'rgb(65, 65, 65)',
@@ -80,7 +81,39 @@ const TrendingModal = ({ isOpen, setIsOpen, selectedTrend }) => {
               zIndex: 1,
             }}
           />
+          <Box
+            sx={{
+              position: 'absolute',
+              top: 0,
+              right: 0,
+              padding: '1rem 1rem 0.5rem 0.5rem',
+              zIndex: 3,
+            }}
+          >
+            <Button
+              onClick={handleClose}
+              sx={{
+                color: 'white',
+                minWidth: 'auto',
+                minHeight: 'auto',
+                width: '2.5rem !important',
+                height: '2.5rem !important',
+                borderWidth: '0.0625rem',
+                borderRadius: '50%',
+                padding: '2px 7px',
 
+                '&:hover': {
+                  backgroundColor: 'rgba(128, 128, 128, 0.4)',
+                },
+              }}
+            >
+              <CloseIcon
+                sx={{
+                  fontSize: 'xx-large',
+                }}
+              />
+            </Button>
+          </Box>
           <Box
             sx={{
               position: 'absolute',
@@ -164,18 +197,37 @@ const TrendingModal = ({ isOpen, setIsOpen, selectedTrend }) => {
             <Button
               sx={{
                 backgroundColor: '#E50814',
-                textTransform: 'capitalize',
-                fontSize: '1.125rem',
-                fontWeight: 500,
                 color: 'white',
                 minHeight: '3rem',
-                width: 'auto',
+                width: { xs: '100%', sm: 'auto' },
                 padding: '0.5rem 1rem',
-                lineHeight: 1,
               }}
             >
-              Get started
-              <ArrowForwardIosIcon fontSize="20px" />
+              <Box
+                sx={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: '0.5rem',
+                }}
+              >
+                <Typography
+                  component={'span'}
+                  sx={{
+                    fontSize: '1.125rem',
+                    fontWeight: 500,
+                    textTransform: 'capitalize',
+                    lineHeight: 1,
+                  }}
+                >
+                  Get started
+                </Typography>
+                <ArrowForwardIosIcon
+                  sx={{
+                    fontSize: 'x-large',
+                  }}
+                />
+              </Box>
             </Button>
           </Box>
         </Box>
