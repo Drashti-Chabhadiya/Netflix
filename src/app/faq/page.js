@@ -1,8 +1,8 @@
-import { Box } from '@mui/material';
 import React from 'react';
+import FAQContents from '../pages/FAQContents';
 
-const FAQContent = () => {
-  return <Box>FAQContent</Box>;
+const FAQPage = () => {
+  return <FAQContents />;
 };
 
-export default FAQContent;
+export default FAQPage;

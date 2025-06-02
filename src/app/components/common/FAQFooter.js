@@ -21,6 +21,7 @@ const FAQFooter = () => {
           alignItems: 'center',
           paddingBottom: '16px',
           borderBottom: '1px solid rgba(255, 255, 255, .4)',
+          paddingTop: '24px',
         }}
       >
         <Typography
@@ -38,6 +39,13 @@ const FAQFooter = () => {
             color: '#000',
             minWidth: '160px',
             marginBottom: '8px',
+            textTransform: 'capitalize',
+            fontSize: '16px',
+            fontWeight: 700,
+            lineHeight: '22px',
+            borderRadius: '4px',
+            padding: '8px 20px',
+            whiteSpace: 'nowrap',
           }}
         >
           Contact Us
