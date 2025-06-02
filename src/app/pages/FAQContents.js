@@ -95,8 +95,8 @@ const FAQContents = () => {
               component={'p'}
               sx={{ fontSize: '16px', lineHeight: '24px', margin: '0 0 16px' }}
             >
-              If you're already a member and would like to learn more about
-              using Netflix, visit Getting started with Netflix.
+              If youre already a member and would like to learn more about using
+              Netflix, visit Getting started with Netflix.
             </Typography>
             <Divider
               sx={{
@@ -217,7 +217,7 @@ const FAQContents = () => {
               sx={{ fontSize: '16px', lineHeight: '24px', margin: '0 0 16px' }}
             >
               Need help getting set up? Search our Help Center for the
-              manufacturer of the device you're using.
+              manufacturer of the device youre using.
             </Typography>
             <Box
               sx={{
