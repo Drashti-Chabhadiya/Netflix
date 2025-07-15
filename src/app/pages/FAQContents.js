@@ -499,6 +499,7 @@ const FAQContents = () => {
                       gap: '10px',
                       marginBottom: '16px',
                     }}
+                    key={article.id}
                   >
                     <ArticleOutlinedIcon />
                     <Link
