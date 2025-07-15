@@ -9,8 +9,7 @@ const FAQFooter = () => {
     <Container
       maxWidth={'lg'}
       sx={{
-        padding: '0 0 48px !important',
-        margin: '0 auto !important',
+        paddingBottom: '48px !important',
       }}
     >
       <Box

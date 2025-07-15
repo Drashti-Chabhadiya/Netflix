@@ -3,12 +3,15 @@ import Link from 'next/link';
 import React from 'react';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Image from 'next/image';
+import ArticleOutlinedIcon from '@mui/icons-material/ArticleOutlined';
+import { faqArticles } from '../lib/faq/faqArticles';
 
 const FAQContents = () => {
   return (
     <Box
       sx={{
-        padding: '1rem 0px',
+        paddingTop: '32px',
+        paddingBottom: '48px',
       }}
     >
       <Container
@@ -52,9 +55,17 @@ const FAQContents = () => {
             <Typography
               variant="h1"
               sx={{
-                fontSize: '40px',
+                fontSize: {
+                  xs: '32px',
+                  sm: '36px',
+                  lg: '40px',
+                },
                 fontWeight: 800,
-                lineHeight: '50px',
+                lineHeight: {
+                  xs: '40px',
+                  sm: '44px',
+                  lg: '50px',
+                },
                 marginBottom: '16px',
               }}
             >
@@ -392,8 +403,7 @@ const FAQContents = () => {
             </Typography>
             <Divider
               sx={{
-                margin: '0 0 40px 0 !important',
-                padding: '24px 0',
+                marginTop: '45px',
               }}
             />
             <Box
@@ -403,6 +413,7 @@ const FAQContents = () => {
                 alignItems: 'center',
                 gap: '16px',
                 textAlign: 'center',
+                padding: '24px 0px',
               }}
             >
               <Typography
@@ -449,7 +460,69 @@ const FAQContents = () => {
             </Box>
           </Grid>
 
-          <Grid size={4}>size 4</Grid>
+          <Grid
+            size={{
+              sm: 12,
+              lg: 4,
+            }}
+          >
+            <Box
+              sx={{
+                border: '1px solid rgba(128, 128, 128, .4)',
+                borderRadius: '4px',
+                padding: '16px',
+                borderTop: '6px solid #e50914',
+                width: {
+                  sm: '100%',
+                  lg: '78%',
+                },
+                margin: {
+                  sm: '0 0 16px 0',
+                  lg: '20px 0 16px 80px',
+                },
+              }}
+            >
+              <Typography
+                component={'h3'}
+                sx={{ fontSize: '18px', margin: '0 0 16px', fontWeight: 700 }}
+              >
+                Related Articles
+              </Typography>
+
+              {faqArticles.map((article) => {
+                return (
+                  <Box
+                    sx={{
+                      display: 'flex',
+                      flexDirection: 'row',
+                      alignItems: 'center',
+                      gap: '10px',
+                      marginBottom: '16px',
+                    }}
+                  >
+                    <ArticleOutlinedIcon />
+                    <Link
+                      href="/faq/what-is-netflix"
+                      style={{ textDecoration: 'underline', color: 'inherit' }}
+                    >
+                      <Typography
+                        sx={{
+                          fontSize: '16px',
+                          lineHeight: '24px',
+                          fontWeight: 400,
+                          ':hover': {
+                            color: 'rgba(0,0,0,.7)',
+                          },
+                        }}
+                      >
+                        {article.name}
+                      </Typography>
+                    </Link>{' '}
+                  </Box>
+                );
+              })}
+            </Box>
+          </Grid>
         </Grid>
       </Container>
     </Box>

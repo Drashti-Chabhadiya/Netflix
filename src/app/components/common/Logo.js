@@ -4,18 +4,16 @@ import Image from 'next/image';
 import { useRouter } from 'next/navigation';
 import React from 'react';
 
-const Logo = () => {
+const Logo = ({ width, height }) => {
   const router = useRouter();
   return (
     <Box
       sx={{
         width: {
-          xs: 100,
-          md: 130,
+          ...width,
         },
         height: {
-          xs: 30,
-          md: 40,
+          ...height,
         },
         cursor: 'pointer',
         position: {

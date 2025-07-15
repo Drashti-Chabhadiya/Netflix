@@ -1,13 +1,13 @@
 'use client';
 import { Box, Container } from '@mui/material';
 
-const Header = ({ children }) => {
+const Header = ({ children, padding }) => {
   return (
     <Container
       maxWidth="lg"
       sx={{
         padding: {
-          lg: '0px !important',
+          lg: `${padding || '0px'} 0px 0px 0px !important`,
         },
       }}
     >

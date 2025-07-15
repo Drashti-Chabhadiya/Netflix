@@ -8,7 +8,7 @@ const LandingPageContent = () => {
       maxWidth="md"
       sx={{
         textAlign: 'center',
-        top: '60%',
+        top: '64%',
         left: '50%',
         transform: 'translate(-50%, -50%)',
         position: 'absolute',

@@ -14,8 +14,14 @@ const LandingPage = () => {
       bgImage={'/assets/images/main-image.jpg'}
       height={'600px'}
     >
-      <Header>
-        <Logo />
+      <Header padding={9}>
+        <Logo
+          width={{ xs: 100, md: 150 }}
+          height={{
+            xs: 30,
+            md: 40,
+          }}
+        />
         <HeaderButton>
           <LanguageBtn height={'32px'} />
           <SignInButton />

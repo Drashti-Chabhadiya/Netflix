@@ -14,7 +14,13 @@ const page = () => {
       height={'100vh'}
     >
       <Header>
-        <Logo />
+         <Logo
+          width={{ xs: 100, md: 150 }}
+          height={{
+            xs: 30,
+            md: 40,
+          }}
+        />
         <HeaderButton>
           <SignInButton />
         </HeaderButton>

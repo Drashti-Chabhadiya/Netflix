@@ -14,7 +14,13 @@ const Login = () => {
       mainBgColor={true}
     >
       <Header>
-        <Logo />
+        <Logo
+          width={{ xs: 100, md: 150 }}
+          height={{
+            xs: 30,
+            md: 40,
+          }}
+        />
         <Box />
       </Header>
       <LoginModal />

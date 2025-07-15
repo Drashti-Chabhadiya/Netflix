@@ -1,10 +1,15 @@
+'use client';
 import { Box, Container } from '@mui/material';
 import LandingPage from './pages/LandingPage';
 import TrendingPage from './pages/TrendingPage';
 import MoreReasons from './pages/MoreReasons';
 import FAQAskedQuestions from './pages/FAQAskedQuestions';
+import UserAvatar from './components/userProfile/UserAvatar';
+import { useSession } from 'next-auth/react';
 
 export default function Home() {
+  const { data: session } = useSession();
+
   return (
     <Box>
       <LandingPage />
@@ -17,6 +22,7 @@ export default function Home() {
           <FAQAskedQuestions />
         </Container>
       </Box>
+      {session?.user && <UserAvatar />}
     </Box>
   );
 }
