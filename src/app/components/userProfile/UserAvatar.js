@@ -2,6 +2,7 @@
 import React from 'react';
 import { Box, IconButton, Tooltip, Avatar } from '@mui/material';
 import { useSession } from 'next-auth/react';
+import Image from 'next/image';
 
 const UserAvatar = () => {
   const { data: session } = useSession();
@@ -34,9 +35,10 @@ const UserAvatar = () => {
       <Tooltip title={user?.email || 'User Avatar'}>
         <IconButton>
           {user?.image ? (
-            <img
+            <Image
               src={user.image}
               alt="User Avatar"
+              fill
               style={{ width: 24, height: 24, borderRadius: '50%' }}
             />
           ) : (
