@@ -1,17 +1,22 @@
 'use client';
 import React, { useState, useEffect } from 'react';
 import { Box, Avatar, Stack, Container, Grid } from '@mui/material';
-import { useSession } from 'next-auth/react';
 import { Controller, useForm } from 'react-hook-form';
 import { CommonModal } from '../common/CommonModal';
 import { StyledTextField } from '../common/texField/StyledTextField';
 import { StyledButton } from '../common/button/StyledButton';
 import EditIcon from '@mui/icons-material/Edit';
+import { useDispatch, useSelector } from 'react-redux';
+import { setUser, updateUserProfile } from '@/app/redux/slice/userSlice';
 
 const UserProfile = ({ openProfile, setOpenProfile }) => {
-  const { data: session } = useSession();
-  const loginUser = session?.user;
-  const [selectedImage, setSelectedImage] = useState(null);
+  const { user } = useSelector((state) => state.user.userData);
+  const loginUser = user;
+
+  const [selectedImageUrl, setSelectedImageUrl] = useState(null);
+  const [selectedFile, setSelectedFile] = useState(null);
+
+  const dispatch = useDispatch();
 
   const {
     control,
@@ -22,7 +27,7 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
     defaultValues: {
       name: '',
       email: '',
-      image: selectedImage || loginUser?.image || null,
+      image: null,
     },
   });
 
@@ -30,17 +35,37 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
     if (loginUser) {
       setValue('name', loginUser.name || '');
       setValue('email', loginUser.email || '');
-
       if (loginUser.image) {
-        setSelectedImage(loginUser.image);
+        setSelectedImageUrl(loginUser.image);
       }
     }
   }, [loginUser, setValue]);
 
-  const onSubmit = (data) => {
-    // Here you can send `data` and `selectedImage` to your backend
-    console.log('Form Data:', data);
-    console.log('Selected Image:', selectedImage);
+  const onSubmit = async (data) => {
+    const formData = new FormData();
+    formData.append('name', data.name);
+    formData.append('email', data.email);
+    if (selectedFile) {
+      formData.append('image', selectedFile); // binary file
+    }
+    formData.append('userId', loginUser?.id || '');
+
+    const resultAction = await dispatch(updateUserProfile(formData));
+
+    if (updateUserProfile.fulfilled.match(resultAction)) {
+      // Update the redux store with the new user data immediately
+      dispatch(setUser(resultAction.payload));
+      setOpenProfile(false);
+    } else {
+      // handle error
+    }
+
+    // await dispatch(updateUserProfile(formData));
+    //     await signIn('credentials', {
+    //   redirect: false,
+    // });
+    // await getSession();
+    // window.location.reload();
     setOpenProfile(false);
   };
 
@@ -60,9 +85,7 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
           name="image"
           control={control}
           defaultValue={null}
-          rules={{
-            required: 'Image is required',
-          }}
+          rules={{ required: 'Image is required' }}
           render={({ field }) => (
             <Box
               position="relative"
@@ -76,14 +99,14 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
             >
               <Avatar
                 alt={loginUser?.name || 'User'}
-                src={selectedImage || loginUser?.image || ''}
+                src={selectedImageUrl || loginUser?.image || ''}
                 sx={{ width: '100%', height: '100%' }}
                 imgProps={{
                   crossOrigin: 'anonymous',
                   referrerPolicy: 'no-referrer',
                 }}
               >
-                {!selectedImage && !loginUser?.image && loginUser?.name?.[0]}
+                {!selectedImageUrl && !loginUser?.image && loginUser?.name?.[0]}
               </Avatar>
 
               <input
@@ -94,8 +117,9 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
                 onChange={(e) => {
                   const file = e.target.files[0];
                   if (file) {
-                    setSelectedImage(URL.createObjectURL(file));
-                    setValue('image', file, { shouldValidate: true });
+                    setSelectedImageUrl(URL.createObjectURL(file)); // preview
+                    setSelectedFile(file); // binary
+                    setValue('image', file, { shouldValidate: true }); // update form
                   }
                 }}
               />
@@ -140,7 +164,6 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
                 variant="outlined"
                 error={!!errors.name}
                 helperText={errors.name?.message}
-                id="outlined-basic"
               />
             )}
           />
@@ -157,7 +180,6 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
                 label="Email"
                 variant="outlined"
                 InputProps={{ readOnly: true }}
-                id="outlined-basic"
               />
             )}
           />

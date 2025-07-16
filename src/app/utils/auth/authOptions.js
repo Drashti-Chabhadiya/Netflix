@@ -74,6 +74,8 @@ export const authOptions = {
       if (dbUser) {
         session.user.id = dbUser._id;
         session.user.token = dbUser.token;
+        session.user.image = dbUser?.image;
+        session.user.name = dbUser?.name;
       }
 
       session.id_token = token.id_token;

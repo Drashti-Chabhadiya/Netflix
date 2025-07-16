@@ -1,13 +1,12 @@
 'use client';
 import React, { useState } from 'react';
 import { Box, IconButton, Tooltip, Avatar } from '@mui/material';
-import { useSession } from 'next-auth/react';
 import Image from 'next/image';
 import UserProfile from './UserProfile';
+import { useSelector } from 'react-redux';
 
 const UserAvatar = () => {
-  const { data: session } = useSession();
-  const user = session?.user;
+  const { user } = useSelector((state) => state.user.userData);
   const [openProfile, setOpenProfile] = useState(false);
 
   const getFallbackLetter = (email) => {

@@ -28,9 +28,31 @@ export const loginUserPostAPI = async (payload) => {
   }
 };
 
+export const loginUserByIdAPI = async (userId) => {
+  try {
+    const result = await axiosInstance.get(`/user/${userId}`);
+    return result;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
 export const logOutAPI = async () => {
   try {
     const result = await axiosInstance.post('/logout');
+    return result;
+  } catch (error) {
+    toast.error(error.message);
+  }
+};
+
+export const updateUserProfileAPI = async (payload) => {
+  try {
+    const result = await axiosInstance.put('/profile', payload, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
     return result;
   } catch (error) {
     toast.error(error.message);

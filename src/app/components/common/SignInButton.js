@@ -2,21 +2,20 @@
 import { Button } from '@mui/material';
 import { useRouter } from 'next/navigation';
 import React from 'react';
-import { useSession, signOut } from 'next-auth/react';
-import { useDispatch } from 'react-redux';
+import { signOut } from 'next-auth/react';
+import { useDispatch, useSelector } from 'react-redux';
 import { logOutUser } from '@/app/redux/slice/userSlice';
 
 const SignInButton = () => {
   const router = useRouter();
   const dispatch = useDispatch();
-  const { data: session } = useSession();
-
+  const userData = useSelector((state) => state.user.userData);
   const handleLogOut = () => {
     dispatch(logOutUser());
     signOut({ callbackUrl: '/' });
   };
 
-  if (session) {
+  if (userData?.user) {
     return (
       <>
         {/* <p>Signed in as {session.user.email}</p> */}
