@@ -4,6 +4,17 @@ import { uploadImageToCloudinary } from '@/app/utils/cloudinary/cloudinary';
 import User from '@/app/utils/models/User';
 import { Buffer } from 'buffer';
 
+export async function OPTIONS() {
+  return new NextResponse(null, {
+    status: 204,
+    headers: {
+      'Access-Control-Allow-Origin': '*', // or specific domain
+      'Access-Control-Allow-Methods': 'PUT, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type',
+    },
+  });
+}
+
 export async function PUT(request) {
   try {
     await connectToDatabase();
@@ -17,23 +28,30 @@ export async function PUT(request) {
     if (!userId || !name || !email) {
       return NextResponse.json(
         { error: 'User ID, name, and email are required' },
-        { status: 400 }
+        {
+          status: 400,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
       );
     }
 
     const user = await User.findById(userId);
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, { status: 404 });
+      return NextResponse.json({ error: 'User not found' }, {
+        status: 404,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      });
     }
 
     let imageUrl = user.image;
 
     if (imageFile && typeof imageFile === 'object' && imageFile.size > 0) {
-      // Convert imageFile (File) to Buffer
       const arrayBuffer = await imageFile.arrayBuffer();
       const buffer = Buffer.from(arrayBuffer);
-
-      // Upload buffer to Cloudinary
       imageUrl = await uploadImageToCloudinary(buffer);
     }
 
@@ -53,13 +71,23 @@ export async function PUT(request) {
           image: user.image,
         },
       },
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
     );
   } catch (error) {
     console.error('Profile update error:', error);
     return NextResponse.json(
       { error: 'Internal Server Error' },
-      { status: 500 }
+      {
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
     );
   }
 }
