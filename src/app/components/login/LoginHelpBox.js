@@ -8,11 +8,11 @@ import {
   Radio,
   RadioGroup,
   Stack,
-  TextField,
   Typography,
 } from '@mui/material';
 import Link from 'next/link';
 import React, { useState } from 'react';
+import { StyledTextField } from '../common/texField/StyledTextField';
 
 const LoginHelpBox = () => {
   const [resetType, setResetType] = useState('email');
@@ -105,31 +105,14 @@ const LoginHelpBox = () => {
               We will text you a verification code to reset your password.
               Message and data rates may apply.
             </Typography>
-            <TextField
+            <StyledTextField
               fullWidth
-              sx={{
-                '& .MuiOutlinedInput-root': {
-                  '& fieldset': {
-                    border: '2px solid rgb(128, 128, 128)',
-                    borderRadius: '8px',
-                  },
-                  '&:hover fieldset': {
-                    border: '2px solid rgb(128, 128, 128)',
-                    borderRadius: '8px',
-                  },
-                  '&.Mui-focused fieldset': {
-                    border: '2px solid rgb(128, 128, 128)',
-                    borderRadius: '8px',
-                  },
-                },
-                '& #outlined-basic-label': {
-                  color: 'rgb(128, 128, 128)',
-                },
-              }}
-              id="outlined-basic"
               label="Mobile number"
               variant="outlined"
+              id="outlined-basic"
+              variantStyle="gray"
             />
+
             <Button
               variant="contained"
               sx={{

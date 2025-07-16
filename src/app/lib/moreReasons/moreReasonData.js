@@ -4,7 +4,7 @@ export const moreReasonData = [
     title: 'Enjoy on your TV',
     description:
       'Watch on smart TVs, PlayStation, Xbox, Chromecast, Apple TV, Blu-ray players and more.',
-    image: '/assets/images/moreReasons/smile.jpg',
+    image: '/assets/images/moreReasons/smile-removebg-preview.png',
     // image: "/assets/images/moreReasons/tv1.jpg",
     imageAlt: 'Watch anywhere',
   },
@@ -13,7 +13,7 @@ export const moreReasonData = [
     title: 'Download your shows to watch offline',
     description:
       'Save your favourites easily and always have something to watch.',
-    image: '/assets/images/moreReasons/smile.jpg',
+    image: '/assets/images/moreReasons/smile-removebg-preview.png',
     // image: "/assets/images/moreReasons/download-2-xxl.png",
     imageAlt: 'No ads',
   },
@@ -22,7 +22,7 @@ export const moreReasonData = [
     title: 'Watch everywhere',
     description:
       'Stream unlimited movies and TV shows on your phone, tablet, laptop and TV.',
-    image: '/assets/images/moreReasons/smile.jpg',
+    image: '/assets/images/moreReasons/smile-removebg-preview.png',
     // image: "/assets/images/moreReasons/istockphoto.jpg",
     imageAlt: 'Download and go',
   },
@@ -31,7 +31,7 @@ export const moreReasonData = [
     title: 'Create profiles for kids',
     description:
       'Send kids on adventures with their favourite characters in a space made just for them — free with your membership.',
-    image: '/assets/images/moreReasons/smile.jpg',
+    image: '/assets/images/moreReasons/smile-removebg-preview.png',
     imageAlt: 'Exclusive content',
   },
 ];

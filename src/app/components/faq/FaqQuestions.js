@@ -1,29 +1,35 @@
+import React, { useEffect, useState } from 'react';
 import {
   Accordion,
   AccordionDetails,
   AccordionSummary,
   Box,
   Typography,
+  Slide,
 } from '@mui/material';
-import React from 'react';
-import TitleUI from '../common/TitleUI';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
+import TitleUI from '../common/TitleUI';
 import { faqData } from '@/app/lib/faq/faqData';
+import FAQAccordionSkeleton from '../skeleton/FAQAccordionSkeleton';
 
 const FaqQuestions = () => {
+  const [loading, setLoading] = useState(true);
+  const [showFaqs, setShowFaqs] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setLoading(false);
+      setShowFaqs(true);
+    }, 2000); // simulate 2s delay
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <Box
-      sx={{
-        padding: '2rem 0',
-      }}
-    >
-      <Box
-        sx={{
-          marginBottom: '1rem',
-        }}
-      >
+    <Box sx={{ padding: '2rem 0' }}>
+      <Box sx={{ marginBottom: '1rem' }}>
         <TitleUI title={'Frequently Asked Questions'} />
       </Box>
+
       <Box
         sx={{
           display: 'flex',
@@ -34,49 +40,43 @@ const FaqQuestions = () => {
           },
         }}
       >
-        {faqData.map((item) => {
-          return (
-            <Accordion
-              key={item.id}
-              sx={{
-                backgroundColor: '#2D2D2D',
-                padding: '1rem',
-              }}
-            >
-              <AccordionSummary
-                expandIcon={
-                  <ArrowDownwardIcon
-                    sx={{
-                      color: 'white',
-                    }}
-                  />
-                }
-                aria-controls="panel1-content"
-                id="panel1-header"
+        {loading
+          ? Array.from({ length: 5 }).map((_, index) => (
+              <FAQAccordionSkeleton key={index} />
+            ))
+          : faqData.map((item, index) => (
+              <Slide
+                key={item.id}
+                direction="up"
+                in={showFaqs}
+                timeout={500 + index * 100}
               >
-                <Typography
-                  component="span"
+                <Accordion
                   sx={{
-                    fontSize: '24px',
-                    color: 'white',
+                    backgroundColor: '#2D2D2D',
+                    padding: '1rem',
                   }}
                 >
-                  {item.question}
-                </Typography>
-              </AccordionSummary>
-              <AccordionDetails>
-                <Typography
-                  sx={{
-                    fontSize: '1.5rem',
-                    color: 'white',
-                  }}
-                >
-                  {item.answer}
-                </Typography>
-              </AccordionDetails>
-            </Accordion>
-          );
-        })}
+                  <AccordionSummary
+                    expandIcon={<ArrowDownwardIcon sx={{ color: 'white' }} />}
+                    aria-controls={`panel${item.id}-content`}
+                    id={`panel${item.id}-header`}
+                  >
+                    <Typography
+                      component="span"
+                      sx={{ fontSize: '24px', color: 'white' }}
+                    >
+                      {item.question}
+                    </Typography>
+                  </AccordionSummary>
+                  <AccordionDetails>
+                    <Typography sx={{ fontSize: '1.5rem', color: 'white' }}>
+                      {item.answer}
+                    </Typography>
+                  </AccordionDetails>
+                </Accordion>
+              </Slide>
+            ))}
       </Box>
     </Box>
   );

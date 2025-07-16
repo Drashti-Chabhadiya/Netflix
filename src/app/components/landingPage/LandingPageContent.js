@@ -1,6 +1,7 @@
-import { Box, Button, Container, TextField, Typography } from '@mui/material';
+import { Box, Button, Container, Typography } from '@mui/material';
 import React from 'react';
 import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
+import { StyledTextField } from '../common/texField/StyledTextField';
 
 const LandingPageContent = () => {
   return (
@@ -51,33 +52,16 @@ const LandingPageContent = () => {
           alignItems: 'center',
         }}
       >
-        <TextField
-          sx={{
-            '& .MuiOutlinedInput-root': {
-              '& fieldset': {
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-              },
-              '&:hover fieldset': {
-                border: '1px solid rgba(255, 255, 255, 0.3)',
-              },
-              '&.Mui-focused fieldset': {
-                border: '2px solid white',
-              },
-              minWidth: {
-                sm: 'auto',
-                md: '500px',
-              },
-            },
-            '& #outlined-basic-label': {
-              color: 'rgba(255, 255, 255, 0.7)',
-            },
-            '& .MuiOutlinedInput-input': {
-              color: 'white',
-            },
-          }}
-          id="outlined-basic"
+        <StyledTextField
           label="Email Address"
           variant="outlined"
+          id="outlined-basic"
+          sx={{
+            minWidth: {
+              sm: 'auto',
+              md: '500px',
+            },
+          }}
         />
         <Button
           variant="contained"

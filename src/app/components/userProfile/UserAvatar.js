@@ -1,12 +1,14 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import { Box, IconButton, Tooltip, Avatar } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import Image from 'next/image';
+import UserProfile from './UserProfile';
 
 const UserAvatar = () => {
   const { data: session } = useSession();
   const user = session?.user;
+  const [openProfile, setOpenProfile] = useState(false);
 
   const getFallbackLetter = (email) => {
     return email?.charAt(0)?.toUpperCase() || '?';
@@ -33,7 +35,7 @@ const UserAvatar = () => {
       }}
     >
       <Tooltip title={user?.email || 'User Avatar'}>
-        <IconButton>
+        <IconButton onClick={() => setOpenProfile(true)} sx={{ p: 0 }}>
           {user?.image ? (
             <Image
               src={user?.image}
@@ -49,6 +51,7 @@ const UserAvatar = () => {
           )}
         </IconButton>
       </Tooltip>
+      <UserProfile openProfile={openProfile} setOpenProfile={setOpenProfile}/>
     </Box>
   );
 };
