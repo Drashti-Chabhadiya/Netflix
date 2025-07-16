@@ -5,14 +5,17 @@ import User from '@/app/utils/models/User';
 import { Buffer } from 'buffer';
 
 export async function OPTIONS() {
-  return NextResponse.json({}, {
-    status: 200,
-    headers: {
-      'Access-Control-Allow-Origin': '*', // Replace * with specific domain in production
-      'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type, Authorization',
-    },
-  });
+  return NextResponse.json(
+    {},
+    {
+      status: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*', // Replace * with specific domain in production
+        'Access-Control-Allow-Methods': 'GET,POST,PUT,DELETE,OPTIONS',
+        'Access-Control-Allow-Headers': 'Content-Type, Authorization',
+      },
+    }
+  );
 }
 
 export async function PUT(request) {
@@ -79,11 +82,14 @@ export async function PUT(request) {
     );
   } catch (error) {
     console.error('Profile update error:', error);
-    return new NextResponse(JSON.stringify({ error: 'Internal Server Error' }), {
-      status: 500,
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-      },
-    });
+    return new NextResponse(
+      JSON.stringify({ error: 'Internal Server Error' }),
+      {
+        status: 500,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+        },
+      }
+    );
   }
 }
