@@ -12,7 +12,7 @@ export async function PUT(request) {
     const userId = formData.get('userId');
     const name = formData.get('name');
     const email = formData.get('email');
-    const imageFile = formData.get('image'); 
+    const imageFile = formData.get('image');
 
     if (!userId || !name || !email) {
       return NextResponse.json(
@@ -26,7 +26,7 @@ export async function PUT(request) {
       return NextResponse.json({ error: 'User not found' }, { status: 404 });
     }
 
-    let imageUrl = user.image; 
+    let imageUrl = user.image;
 
     if (imageFile && typeof imageFile === 'object' && imageFile.size > 0) {
       // Convert imageFile (File) to Buffer
