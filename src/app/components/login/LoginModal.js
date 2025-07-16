@@ -5,7 +5,6 @@ import {
   Checkbox,
   Container,
   Grid,
-  TextField,
   Typography,
 } from '@mui/material';
 import { signIn } from 'next-auth/react';
@@ -15,6 +14,7 @@ import { useRouter } from 'next/navigation';
 import React from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import { toast } from 'react-toastify';
+import { StyledTextField } from '../common/texField/StyledTextField';
 
 const LoginModal = () => {
   const router = useRouter();
@@ -111,36 +111,14 @@ const LoginModal = () => {
                     },
                   }}
                   render={({ field }) => (
-                    <TextField
+                    <StyledTextField
                       {...field}
                       fullWidth
-                      id="outlined-basic"
                       label="Email or mobile number"
                       variant="outlined"
+                      id="outlined-basic"
                       error={!!errors.email}
                       helperText={errors.email ? errors.email.message : ''}
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': {
-                            border: '2px solid rgba(255, 255, 255, 0.7)',
-                            borderRadius: '8px',
-                          },
-                          '&:hover fieldset': {
-                            border: '2px solid rgba(255, 255, 255, 0.7)',
-                            borderRadius: '8px',
-                          },
-                          '&.Mui-focused fieldset': {
-                            border: '2px solid white',
-                            borderRadius: '8px',
-                          },
-                        },
-                        '& #outlined-basic-label': {
-                          color: 'rgba(255, 255, 255, 0.7)',
-                        },
-                        '& .MuiOutlinedInput-input ': {
-                          color: 'white',
-                        },
-                      }}
                     />
                   )}
                 />
@@ -158,39 +136,16 @@ const LoginModal = () => {
                     },
                   }}
                   render={({ field }) => (
-                    <TextField
+                    <StyledTextField
                       {...field}
                       fullWidth
-                      id="outlined-basic"
                       label="Password"
-                      variant="outlined"
                       type="password"
+                      id="outlined-basic"
                       error={!!errors.password}
                       helperText={
                         errors.password ? errors.password.message : ''
                       }
-                      sx={{
-                        '& .MuiOutlinedInput-root': {
-                          '& fieldset': {
-                            border: '2px solid rgba(255, 255, 255, 0.7)',
-                            borderRadius: '8px',
-                          },
-                          '&:hover fieldset': {
-                            border: '2px solid rgba(255, 255, 255, 0.7)',
-                            borderRadius: '8px',
-                          },
-                          '&.Mui-focused fieldset': {
-                            border: '2px solid white',
-                            borderRadius: '8px',
-                          },
-                        },
-                        '& #outlined-basic-label': {
-                          color: 'rgba(255, 255, 255, 0.7)',
-                        },
-                        '& .MuiOutlinedInput-input ': {
-                          color: 'white',
-                        },
-                      }}
                     />
                   )}
                 />

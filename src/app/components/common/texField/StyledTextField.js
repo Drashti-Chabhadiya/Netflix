@@ -16,6 +16,9 @@ const whiteThemeStyles = {
   '& .MuiOutlinedInput-input': {
     color: 'white',
   },
+  '& #outlined-basic-label': {
+    color: 'rgba(255, 255, 255, 0.7)',
+  },
   '& .MuiInputLabel-root': {
     color: 'rgba(255, 255, 255, 0.7)',
   },
