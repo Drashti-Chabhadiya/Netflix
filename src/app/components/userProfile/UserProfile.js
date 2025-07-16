@@ -1,11 +1,12 @@
 'use client';
 import React, { useState, useEffect } from 'react';
-import { Box, Avatar, Button, Stack, Container, Grid } from '@mui/material';
+import { Box, Avatar, Stack, Container, Grid } from '@mui/material';
 import { useSession } from 'next-auth/react';
 import { Controller, useForm } from 'react-hook-form';
 import { CommonModal } from '../common/CommonModal';
 import { StyledTextField } from '../common/texField/StyledTextField';
 import { StyledButton } from '../common/button/StyledButton';
+import EditIcon from '@mui/icons-material/Edit';
 
 const UserProfile = ({ openProfile, setOpenProfile }) => {
   const { data: session } = useSession();
@@ -55,54 +56,68 @@ const UserProfile = ({ openProfile, setOpenProfile }) => {
         component="form"
         onSubmit={handleSubmit(onSubmit)}
       >
-        <Avatar
-          alt={loginUser?.name || 'User'}
-          src={selectedImage || loginUser?.image}
-          sx={{ width: 100, height: 100 }}
-          imgProps={{
-            crossOrigin: 'anonymous',
-            referrerPolicy: 'no-referrer',
-          }}
-        >
-          {loginUser?.name?.[0]}
-        </Avatar>
-
         <Controller
           name="image"
           control={control}
           defaultValue={null}
           rules={{
             required: 'Image is required',
-            validate: {
-              isImage: (file) =>
-                !file ||
-                (file && file.type.startsWith('image/')) ||
-                'Only image files are allowed',
-            },
           }}
           render={({ field }) => (
-            <>
-              <Button variant="outlined" component="label" size="small">
-                Upload Image
-                <input
-                  type="file"
-                  hidden
-                  accept="image/*"
-                  onChange={(e) => {
-                    const file = e.target.files[0];
-                    if (file) {
-                      setSelectedImage(URL.createObjectURL(file));
-                      field.onChange(file);
-                    }
+            <Box
+              position="relative"
+              sx={{
+                width: 120,
+                height: 120,
+                '&:hover .edit-overlay': {
+                  display: 'flex',
+                },
+              }}
+            >
+              <Avatar
+                alt={loginUser?.name || 'User'}
+                src={selectedImage || loginUser?.image || ''}
+                sx={{ width: '100%', height: '100%' }}
+                imgProps={{
+                  crossOrigin: 'anonymous',
+                  referrerPolicy: 'no-referrer',
+                }}
+              >
+                {!selectedImage && !loginUser?.image && loginUser?.name?.[0]}
+              </Avatar>
+
+              <input
+                accept="image/*"
+                id="avatar-upload"
+                type="file"
+                hidden
+                onChange={(e) => {
+                  const file = e.target.files[0];
+                  if (file) {
+                    setSelectedImage(URL.createObjectURL(file));
+                    setValue('image', file, { shouldValidate: true });
+                  }
+                }}
+              />
+
+              <label htmlFor="avatar-upload">
+                <Box
+                  className="edit-overlay"
+                  sx={{
+                    display: 'none',
+                    position: 'absolute',
+                    top: 5,
+                    right: 5,
+                    backgroundColor: 'rgba(0,0,0,0.6)',
+                    borderRadius: '50%',
+                    padding: '4px',
+                    cursor: 'pointer',
                   }}
-                />
-              </Button>
-              {errors.image && (
-                <span style={{ color: 'red', fontSize: '0.8rem' }}>
-                  {errors.image.message}
-                </span>
-              )}
-            </>
+                >
+                  <EditIcon sx={{ fontSize: 18, color: 'white' }} />
+                </Box>
+              </label>
+            </Box>
           )}
         />
 
