@@ -36,9 +36,10 @@ const UserAvatar = () => {
         <IconButton>
           {user?.image ? (
             <Image
-              src={user.image}
+              src={user?.image}
               alt="User Avatar"
-              fill
+              width={24}
+              height={24}
               style={{ width: 24, height: 24, borderRadius: '50%' }}
             />
           ) : (
