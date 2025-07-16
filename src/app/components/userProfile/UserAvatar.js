@@ -51,7 +51,7 @@ const UserAvatar = () => {
           )}
         </IconButton>
       </Tooltip>
-      <UserProfile openProfile={openProfile} setOpenProfile={setOpenProfile}/>
+      <UserProfile openProfile={openProfile} setOpenProfile={setOpenProfile} />
     </Box>
   );
 };

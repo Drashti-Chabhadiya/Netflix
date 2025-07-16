@@ -34,10 +34,7 @@ export const CustomBackdrop = forwardRef(({ open, ...props }, ref) => {
         }}
       >
         <Header>
-          <Logo
-            width={{ xs: 100, md: 150 }}
-            height={{ xs: 30, md: 40 }}
-          />
+          <Logo width={{ xs: 100, md: 150 }} height={{ xs: 30, md: 40 }} />
           <Box />
         </Header>
       </Box>

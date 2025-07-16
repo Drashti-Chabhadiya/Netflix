@@ -7,7 +7,6 @@ import HeaderButton from '../components/common/HeaderButton';
 import SignInButton from '../components/common/SignInButton';
 import LanguageBtn from '../components/common/LanguageBtn';
 
-
 const LandingPage = () => {
   return (
     <MainBackground
