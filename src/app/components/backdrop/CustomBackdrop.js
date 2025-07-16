@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Backdrop, Box } from '@mui/material';
 import Header from '../common/Header';
 import Logo from '../common/Logo';
+import { forwardRef } from 'react';
 
-export const CustomBackdrop = React.forwardRef(({ open, ...props }, ref) => {
+export const CustomBackdrop = forwardRef(({ open, ...props }, ref) => {
   return (
     <Backdrop
       open={open}
@@ -11,7 +12,6 @@ export const CustomBackdrop = React.forwardRef(({ open, ...props }, ref) => {
       {...props}
       sx={{
         zIndex: -1,
-
         backgroundImage: 'url("/assets/images/main-image.jpg")',
         backgroundSize: 'cover',
         backgroundPosition: 'center',
@@ -36,10 +36,7 @@ export const CustomBackdrop = React.forwardRef(({ open, ...props }, ref) => {
         <Header>
           <Logo
             width={{ xs: 100, md: 150 }}
-            height={{
-              xs: 30,
-              md: 40,
-            }}
+            height={{ xs: 30, md: 40 }}
           />
           <Box />
         </Header>
@@ -47,3 +44,5 @@ export const CustomBackdrop = React.forwardRef(({ open, ...props }, ref) => {
     </Backdrop>
   );
 });
+
+CustomBackdrop.displayName = 'CustomBackdrop';
