@@ -6,7 +6,6 @@ import { Box } from '@mui/material';
 import UserProfile from '../components/userProfile/UserProfile';
 
 const Login = () => {
-  
   return (
     <MainBackground
       color="rgba(0, 0, 0, 0.5)"

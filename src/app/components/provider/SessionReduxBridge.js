@@ -16,7 +16,7 @@ const SessionReduxBridge = () => {
     }
   }, [session, userData?.user, dispatch]);
 
-  return null; 
+  return null;
 };
 
 export default SessionReduxBridge;

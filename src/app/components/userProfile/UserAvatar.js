@@ -70,7 +70,7 @@ const UserAvatar = ({ user }) => {
         anchorEl={anchorEl}
         open={Boolean(anchorEl)}
         onClose={handleMenuClose}
-          disableScrollLock={true} 
+        disableScrollLock={true}
         PaperProps={{
           sx: {
             backgroundColor: '#181818',

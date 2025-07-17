@@ -40,8 +40,8 @@ export const StyledButton = ({
         colorType === 'save'
           ? '#E50814'
           : colorType === 'cancel'
-          ? 'rgba(128, 128, 128, 0.4)'
-          : '#1976d2',
+            ? 'rgba(128, 128, 128, 0.4)'
+            : '#1976d2',
     },
   };
 
