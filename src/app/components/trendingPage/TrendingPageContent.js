@@ -1,7 +1,7 @@
 'use client';
 import React, { useEffect, useState } from 'react';
 import '../../styles/trendingSwiper.css';
-import { Box, Grid, Grow, Skeleton } from '@mui/material';
+import { Box, Grid, Skeleton } from '@mui/material';
 import TitleUI from '../common/TitleUI';
 import { trendingImages } from '@/app/lib/TrendingPage/trendingImage';
 import Image from 'next/image';
@@ -77,26 +77,25 @@ const TrendingPageContent = () => {
                     height={350}
                   />
                 ) : (
-                  <Grow in={!loading} timeout={1000}>
-                    <Box
-                      sx={{
-                        overflow: 'hidden',
-                        transition: 'transform 0.2s',
-                        '&:hover': {
-                          transform: 'scale(1.05)',
-                        },
-                      }}
-                      onClick={() => handleOpen(trendData)}
-                    >
-                      <Image
-                        src={trendData.src}
-                        alt={trendData.alt}
-                        width={250}
-                        height={250}
-                        style={{ borderRadius: '8px' }}
-                      />
-                    </Box>
-                  </Grow>
+                  <Box
+                    data-aos="flip-up"
+                    sx={{
+                      overflow: 'hidden',
+                      transition: 'transform 0.2s',
+                      '&:hover': {
+                        transform: 'scale(1.05)',
+                      },
+                    }}
+                    onClick={() => handleOpen(trendData)}
+                  >
+                    <Image
+                      src={trendData.src}
+                      alt={trendData.alt}
+                      width={250}
+                      height={250}
+                      style={{ borderRadius: '8px' }}
+                    />
+                  </Box>
                 )}
               </Box>
             </SwiperSlide>

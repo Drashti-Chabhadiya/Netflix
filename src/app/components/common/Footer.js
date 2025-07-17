@@ -22,9 +22,14 @@ const Footer = () => {
         </Typography>
 
         <Grid container spacing={2}>
-          {footerData.map((item) => {
+          {footerData.map((item, index) => {
             return (
-              <Grid key={item.id} size={{ lg: 3, xs: 12, md: 6, sm: 6 }}>
+              <Grid
+                key={item.id}
+                size={{ lg: 3, xs: 12, md: 6, sm: 6 }}
+                // data-aos="fade-up"
+                // data-aos-delay={index * 100}
+              >
                 <Box
                   sx={{
                     display: 'inline-block',

@@ -9,6 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { setUser } from './redux/slice/userSlice';
 import { useSession } from 'next-auth/react';
+import 'animate.css';
 
 export default function Home() {
   const userData = useSelector((state) => state.user.userData);

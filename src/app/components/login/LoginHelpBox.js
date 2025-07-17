@@ -44,7 +44,7 @@ const LoginHelpBox = () => {
         },
       }}
     >
-      <Box>
+      <Box data-aos="zoom-in">
         <Box
           sx={{
             bgcolor: 'rgb(242, 242, 242)',

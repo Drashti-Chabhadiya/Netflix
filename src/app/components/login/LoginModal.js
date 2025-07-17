@@ -81,6 +81,7 @@ const LoginModal = () => {
           border: '2px solid #000',
           p: 7,
         }}
+        data-aos="zoom-in"
       >
         <form onSubmit={handleSubmit(onSubmit)}>
           {' '}

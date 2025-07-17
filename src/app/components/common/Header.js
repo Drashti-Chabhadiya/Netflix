@@ -10,6 +10,9 @@ const Header = ({ children, padding }) => {
           lg: `${padding || '0px'} 0px 0px 0px !important`,
         },
       }}
+      data-aos="fade-down"
+      data-aos-easing="linear"
+      data-aos-duration="500"
     >
       <Box
         sx={{

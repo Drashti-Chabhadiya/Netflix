@@ -5,7 +5,6 @@ import {
   AccordionSummary,
   Box,
   Typography,
-  Slide,
 } from '@mui/material';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import TitleUI from '../common/TitleUI';
@@ -14,12 +13,10 @@ import FAQAccordionSkeleton from '../skeleton/FAQAccordionSkeleton';
 
 const FaqQuestions = () => {
   const [loading, setLoading] = useState(true);
-  const [showFaqs, setShowFaqs] = useState(false);
 
   useEffect(() => {
     const timer = setTimeout(() => {
       setLoading(false);
-      setShowFaqs(true);
     }, 2000); // simulate 2s delay
     return () => clearTimeout(timer);
   }, []);
@@ -45,37 +42,33 @@ const FaqQuestions = () => {
               <FAQAccordionSkeleton key={index} />
             ))
           : faqData.map((item, index) => (
-              <Slide
+              <Accordion
+                sx={{
+                  backgroundColor: '#2D2D2D',
+                  padding: '1rem',
+                }}
                 key={item.id}
-                direction="up"
-                in={showFaqs}
-                timeout={500 + index * 100}
+                data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+                data-aos-duration="1000"
               >
-                <Accordion
-                  sx={{
-                    backgroundColor: '#2D2D2D',
-                    padding: '1rem',
-                  }}
+                <AccordionSummary
+                  expandIcon={<ArrowDownwardIcon sx={{ color: 'white' }} />}
+                  aria-controls={`panel${item.id}-content`}
+                  id={`panel${item.id}-header`}
                 >
-                  <AccordionSummary
-                    expandIcon={<ArrowDownwardIcon sx={{ color: 'white' }} />}
-                    aria-controls={`panel${item.id}-content`}
-                    id={`panel${item.id}-header`}
+                  <Typography
+                    component="span"
+                    sx={{ fontSize: '24px', color: 'white' }}
                   >
-                    <Typography
-                      component="span"
-                      sx={{ fontSize: '24px', color: 'white' }}
-                    >
-                      {item.question}
-                    </Typography>
-                  </AccordionSummary>
-                  <AccordionDetails>
-                    <Typography sx={{ fontSize: '1.5rem', color: 'white' }}>
-                      {item.answer}
-                    </Typography>
-                  </AccordionDetails>
-                </Accordion>
-              </Slide>
+                    {item.question}
+                  </Typography>
+                </AccordionSummary>
+                <AccordionDetails>
+                  <Typography sx={{ fontSize: '1.5rem', color: 'white' }}>
+                    {item.answer}
+                  </Typography>
+                </AccordionDetails>
+              </Accordion>
             ))}
       </Box>
     </Box>

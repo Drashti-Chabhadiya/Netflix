@@ -6,7 +6,6 @@ import {
   CardContent,
   Grid,
   Typography,
-  Zoom,
 } from '@mui/material';
 import React, { useEffect, useState } from 'react';
 import TitleUI from '../common/TitleUI';
@@ -41,68 +40,64 @@ const MoreReasonContent = () => {
               {loading ? (
                 <MoreReasonSkeletonCard />
               ) : (
-                <Zoom
-                  in={!loading}
-                  timeout={500 + index * 200}
-                  style={{ transitionDelay: `${index * 150}ms` }}
+                <Card
+                  sx={{
+                    backgroundColor: '#1E162A',
+                    minHeight: '250px',
+                  }}
+                  data-aos={index % 2 === 0 ? 'fade-up' : 'fade-down'} // 👈 alternate animations
+                  data-aos-duration="1000"
                 >
-                  <Card
-                    sx={{
-                      backgroundColor: '#1E162A',
-                      minHeight: '250px',
-                    }}
-                  >
-                    <CardContent>
-                      <Box
-                        sx={{
-                          display: 'flex',
-                          alignItems: 'center',
-                        }}
-                      >
-                        <Box
-                          sx={{
-                            minHeight: {
-                              sm: 0,
-                              md: '128px',
-                              lg: '215px',
-                            },
-                          }}
-                        >
-                          <Typography
-                            sx={{
-                              fontSize: '24px',
-                              color: 'white',
-                              marginBottom: '15px',
-                            }}
-                          >
-                            {item.title}
-                          </Typography>
-                          <Typography
-                            sx={{
-                              fontSize: '16px',
-                              color: 'rgba(255, 255, 255, 0.7)',
-                            }}
-                          >
-                            {item.description}
-                          </Typography>
-                        </Box>
-                      </Box>
-                    </CardContent>
-                    <CardActions
+                  <CardContent>
+                    <Box
                       sx={{
                         display: 'flex',
-                        justifyContent: 'end',
+                        alignItems: 'center',
                       }}
                     >
-                      <Image
-                        src={item.image}
-                        alt={item.imageAlt}
-                        width={72}
-                        height={72}
-                      />
-                    </CardActions>
-                  </Card>
-                </Zoom>
+                      <Box
+                        sx={{
+                          minHeight: {
+                            sm: 0,
+                            md: '128px',
+                            lg: '215px',
+                          },
+                        }}
+                      >
+                        <Typography
+                          sx={{
+                            fontSize: '24px',
+                            color: 'white',
+                            marginBottom: '15px',
+                          }}
+                        >
+                          {item.title}
+                        </Typography>
+                        <Typography
+                          sx={{
+                            fontSize: '16px',
+                            color: 'rgba(255, 255, 255, 0.7)',
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                      </Box>
+                    </Box>
+                  </CardContent>
+                  <CardActions
+                    sx={{
+                      display: 'flex',
+                      justifyContent: 'end',
+                    }}
+                  >
+                    <Image
+                      src={item.image}
+                      alt={item.imageAlt}
+                      width={72}
+                      height={72}
+                    />
+                  </CardActions>
+                </Card>
               )}
             </Grid>
           );

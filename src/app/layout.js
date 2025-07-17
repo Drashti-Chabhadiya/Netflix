@@ -6,6 +6,7 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 import 'swiper/css/navigation';
 import { ToastContainer } from 'react-toastify';
+import AOSWrapper from './components/common/animation/AOSWrapper';
 
 export const metadata = {
   title: 'Netflix India – Watch TV Shows Online, Watch Movies Online',
@@ -18,8 +19,12 @@ export default function RootLayout({ children }) {
       <body style={{ margin: 0 }}>
         <ReduxProvider>
           <Providers>
-            <LayoutWrapper>{children}</LayoutWrapper>
-            <ToastContainer />
+            <AOSWrapper>
+              <LayoutWrapper>
+                {children}
+                <ToastContainer />
+              </LayoutWrapper>
+            </AOSWrapper>
           </Providers>
         </ReduxProvider>
       </body>
