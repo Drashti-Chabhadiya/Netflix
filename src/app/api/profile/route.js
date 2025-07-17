@@ -39,12 +39,15 @@ export async function PUT(request) {
 
     const user = await User.findById(userId);
     if (!user) {
-      return NextResponse.json({ error: 'User not found' }, {
-        status: 404,
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-        },
-      });
+      return NextResponse.json(
+        { error: 'User not found' },
+        {
+          status: 404,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
     }
 
     let imageUrl = user.image;

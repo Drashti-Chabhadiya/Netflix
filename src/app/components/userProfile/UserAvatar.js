@@ -4,14 +4,11 @@ import { Box, IconButton, Tooltip, Avatar } from '@mui/material';
 import Image from 'next/image';
 import UserProfile from './UserProfile';
 import { useSelector } from 'react-redux';
+import { getFallbackLetter } from '@/app/utils/helper/getFallbackLetter';
 
 const UserAvatar = () => {
   const { user } = useSelector((state) => state.user.userData);
   const [openProfile, setOpenProfile] = useState(false);
-
-  const getFallbackLetter = (email) => {
-    return email?.charAt(0)?.toUpperCase() || '?';
-  };
 
   return (
     <Box
