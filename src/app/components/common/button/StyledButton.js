@@ -15,9 +15,11 @@ export const StyledButton = ({
     },
     cancel: {
       backgroundColor: 'rgba(128, 128, 128, 0.4)',
+      color: '#fff',
     },
     save: {
       backgroundColor: '#E50814',
+      color: '#fff',
     },
   };
 
@@ -27,6 +29,20 @@ export const StyledButton = ({
     fontWeight: 500,
     width: '100%',
     minHeight: '2.5rem',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+    gap: 1,
+    '&.Mui-disabled': {
+      opacity: 1,
+      color: '#fff',
+      backgroundColor:
+        colorType === 'save'
+          ? '#E50814'
+          : colorType === 'cancel'
+          ? 'rgba(128, 128, 128, 0.4)'
+          : '#1976d2',
+    },
   };
 
   return (

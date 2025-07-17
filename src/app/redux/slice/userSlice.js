@@ -14,6 +14,7 @@ const userSlice = createSlice({
     status: 'idle', // 'idle' | 'loading' | 'succeeded' | 'failed'
     error: null,
     loading: false,
+    updateUserLoading: false,
   },
   reducers: {
     setUser(state, action) {
@@ -88,19 +89,19 @@ const userSlice = createSlice({
       })
       .addCase(updateUserProfile.pending, (state) => {
         state.status = 'loading';
-        state.loading = true;
+        state.updateUserLoading = true;
         state.error = null;
       })
       .addCase(updateUserProfile.fulfilled, (state, action) => {
         state.status = 'succeeded';
         state.userData = action.payload;
-        state.loading = false;
+        state.updateUserLoading = false;
         state.error = null;
       })
       .addCase(updateUserProfile.rejected, (state, action) => {
         state.status = 'failed';
         state.error = action.error.message;
-        state.loading = false;
+        state.updateUserLoading = false;
       });
   },
 });

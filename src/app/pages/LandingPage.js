@@ -6,8 +6,12 @@ import Logo from '../components/common/Logo';
 import HeaderButton from '../components/common/HeaderButton';
 import SignInButton from '../components/common/SignInButton';
 import LanguageBtn from '../components/common/LanguageBtn';
+import UserAvatar from '../components/userProfile/UserAvatar';
+import { useSelector } from 'react-redux';
 
 const LandingPage = () => {
+  const userData = useSelector((state) => state.user.userData);
+  const isLoggedIn = !!userData?.user;
   return (
     <MainBackground
       color="rgba(0, 0, 0, 0.7)"
@@ -24,7 +28,7 @@ const LandingPage = () => {
         />
         <HeaderButton>
           <LanguageBtn height={'32px'} />
-          <SignInButton />
+          {isLoggedIn ? <UserAvatar user={userData.user} /> : <SignInButton />}
         </HeaderButton>
       </Header>
       <LandingPageContent />

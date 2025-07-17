@@ -23,7 +23,7 @@ export const CommonModal = ({ open, handleClose, body, footer }) => {
       onClose={handleClose}
       aria-labelledby="modal-modal-title"
       aria-describedby="modal-modal-description"
-      BackdropComponent={CustomBackdrop}
+      // BackdropComponent={CustomBackdrop}
     >
       <Box sx={style}>
         {body}
