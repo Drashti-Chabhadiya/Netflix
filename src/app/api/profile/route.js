@@ -31,17 +31,17 @@ export async function PUT(request) {
     const user = await User.findById(userId);
 
     console.log("user:**-*-*-*-*-*-404-*-*-*-*-*-*-", user);
-    if (!user) {
-      return NextResponse.json(
-        { error: 'User not found' },
-        {
-          status: 404,
-          headers: {
-            'Access-Control-Allow-Origin': '*',
-          },
-        }
-      );
-    }
+    // if (!user) {
+    //   return NextResponse.json(
+    //     { error: 'User not found' },
+    //     {
+    //       status: 404,
+    //       headers: {
+    //         'Access-Control-Allow-Origin': '*',
+    //       },
+    //     }
+    //   );
+    // }
 
     let imageUrl = user.image;
 

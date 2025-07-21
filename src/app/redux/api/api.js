@@ -48,7 +48,7 @@ export const logOutAPI = async () => {
 
 export const updateUserProfileAPI = async (payload) => {
   try {
-    console.log(payload," payload in updateUserProfileAPI");
+    console.log(payload," payload in updateUserProfileAPI*-*-*-*-*-*-*-*-*-*-");
     const result = await axiosInstance.put('/profile', payload, {
       headers: {
         'Content-Type': 'multipart/form-data',

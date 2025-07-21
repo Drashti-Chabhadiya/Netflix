@@ -61,13 +61,16 @@ const UserProfile = () => {
     }
     formData.append('userId', loginUser?.id || '');
 
-    const resultAction = await dispatch(updateUserProfile(formData));
+    console.log("formData:*-*-resultAction*-*-onsubmit", formData);
 
-    if (updateUserProfile.fulfilled.match(resultAction)) {
-      dispatch(setUser(resultAction.payload));
-      router.push('/');
-      handleClose();
-    }
+    const resultAction = await dispatch(updateUserProfile(formData));
+    console.log("resultAction:", resultAction);
+
+    // if (updateUserProfile.fulfilled.match(resultAction)) {
+    //   dispatch(setUser(resultAction.payload));
+    //   router.push('/');
+    //   handleClose();
+    // }
   };
 
   const handleClose = () => {
