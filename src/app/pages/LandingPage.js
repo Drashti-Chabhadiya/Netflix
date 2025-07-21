@@ -29,13 +29,13 @@ const LandingPage = () => {
           width="100%"
           flexDirection="row"
         >
-         <Logo
-          width={{ xs: 100, md: 150 }}
-          height={{
-            xs: 30,
-            md: 40,
-          }}
-        />
+          <Logo
+            width={{ xs: 100, md: 150 }}
+            height={{
+              xs: 30,
+              md: 40,
+            }}
+          />
 
           <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
             <HeaderButton>

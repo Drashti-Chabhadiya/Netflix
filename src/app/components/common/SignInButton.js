@@ -46,7 +46,7 @@ const SignInButton = () => {
         textTransform: 'capitalize',
         textAlign: 'center',
         py: '4px',
-          minWidth: { xs: 50, sm: 120 },
+        minWidth: { xs: 50, sm: 120 },
       }}
     >
       Sign In

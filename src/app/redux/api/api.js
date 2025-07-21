@@ -1,8 +1,9 @@
 import axios from 'axios';
 import { toast } from 'react-toastify';
 
+console.log('API Base URL:', process.env.NEXT_API_BASE_URL)
 const axiosInstance = axios.create({
-  baseURL: process.env.NEXT_API_BASE_URL || 'http://localhost:3000/api',
+  baseURL: `${process.env.NEXT_API_BASE_URL || 'http://localhost:3000/api'}`,
 });
 
 export const loginUserGetAPI = async () => {
@@ -48,13 +49,11 @@ export const logOutAPI = async () => {
 
 export const updateUserProfileAPI = async (payload) => {
   try {
-    console.log(payload," payload in updateUserProfileAPI*-*-*-*-*-*-*-*-*-*-");
     const result = await axiosInstance.put('/profile', payload, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
-    console.log(result," result in updateUserProfileAPI");
     return result;
   } catch (error) {
     toast.error(error.message);

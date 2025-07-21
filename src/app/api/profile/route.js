@@ -9,12 +9,10 @@ export async function PUT(request) {
     await connectToDatabase();
 
     const formData = await request.formData();
-    console.log("formData:", formData);
     const userId = formData.get('userId');
     const name = formData.get('name');
     const email = formData.get('email');
     const imageFile = formData.get('image');
-    console.log("userId:", userId, "name:", name, "email:", email, "imageFile:", imageFile);
 
     if (!userId || !name || !email) {
       return NextResponse.json(
@@ -30,18 +28,17 @@ export async function PUT(request) {
 
     const user = await User.findById(userId);
 
-    console.log("user:**-*-*-*-*-*-404-*-*-*-*-*-*-", user);
-    // if (!user) {
-    //   return NextResponse.json(
-    //     { error: 'User not found' },
-    //     {
-    //       status: 404,
-    //       headers: {
-    //         'Access-Control-Allow-Origin': '*',
-    //       },
-    //     }
-    //   );
-    // }
+    if (!user) {
+      return NextResponse.json(
+        { error: 'User not found' },
+        {
+          status: 404,
+          headers: {
+            'Access-Control-Allow-Origin': '*',
+          },
+        }
+      );
+    }
 
     let imageUrl = user.image;
 
