@@ -4,17 +4,6 @@ import { uploadImageToCloudinary } from '@/app/utils/cloudinary/cloudinary';
 import User from '@/app/utils/models/User';
 import { Buffer } from 'buffer';
 
-export async function OPTIONS() {
-  return new NextResponse(null, {
-    status: 204,
-    headers: {
-      'Access-Control-Allow-Origin': '*', // or specific domain
-      'Access-Control-Allow-Methods': 'PUT, OPTIONS',
-      'Access-Control-Allow-Headers': 'Content-Type',
-    },
-  });
-}
-
 export async function PUT(request) {
   try {
     await connectToDatabase();
