@@ -48,8 +48,8 @@ const FaqQuestions = () => {
                   padding: '1rem',
                 }}
                 key={item.id}
-                data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
-                data-aos-duration="1000"
+                // data-aos={index % 2 === 0 ? 'fade-right' : 'fade-left'}
+                // data-aos-duration="1000"
               >
                 <AccordionSummary
                   expandIcon={<ArrowDownwardIcon sx={{ color: 'white' }} />}
