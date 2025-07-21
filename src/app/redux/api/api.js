@@ -48,11 +48,13 @@ export const logOutAPI = async () => {
 
 export const updateUserProfileAPI = async (payload) => {
   try {
+    console.log(payload," payload in updateUserProfileAPI");
     const result = await axiosInstance.put('/profile', payload, {
       headers: {
         'Content-Type': 'multipart/form-data',
       },
     });
+    console.log(result," result in updateUserProfileAPI");
     return result;
   } catch (error) {
     toast.error(error.message);

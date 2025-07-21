@@ -35,7 +35,7 @@ const UserAvatar = ({ user }) => {
 
   const menuOptions = [
     {
-      label: 'Update Profile',
+      label: 'Profile',
       action: handleProfileUpdate,
       color: 'white',
       backgroundColor: '#333',
