@@ -8,7 +8,7 @@ const MoreReasonSkeletonCard = () => {
       sx={{
         backgroundColor: 'grey.900',
         minHeight: '250px',
-        width: 270,
+        // width: 270,
         borderRadius: '8px',
       }}
     >

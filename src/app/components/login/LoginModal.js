@@ -62,12 +62,16 @@ const LoginModal = () => {
           xs: '0px !important',
         },
         position: 'absolute',
-        top: '50%',
+
         left: '50%',
+        top: '50%',
         transform: 'translate(-50%, -50%)',
         width: {
           sm: '100%',
           md: 480,
+        },
+        '@media (max-width: 600px)': {
+          top: '60%',
         },
       }}
     >
