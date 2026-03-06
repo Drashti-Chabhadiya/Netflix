@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import Header from '../components/common/Header';
 import LandingPageContent from '../components/landingPage/LandingPageContent';

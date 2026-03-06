@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import FAQContents from '../pages/FAQContents';
 import FAQHeader from '../components/common/FAQHeader';

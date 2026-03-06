@@ -1,3 +1,5 @@
+'use client';
+
 import React from 'react';
 import MoreReasonContent from '../components/moreReasons/MoreReasonContent';
 

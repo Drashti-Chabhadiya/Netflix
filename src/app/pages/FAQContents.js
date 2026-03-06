@@ -1,3 +1,5 @@
+'use client';
+
 import { Box, Container, Divider, Grid, Typography } from '@mui/material';
 import Link from 'next/link';
 import React from 'react';
